@@ -4,6 +4,9 @@ import "./index.css";
 import App from "./App";
 import AppContextProvider from "./Context/applicationContext";
 import { BrowserRouter as Router } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
+
+
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
