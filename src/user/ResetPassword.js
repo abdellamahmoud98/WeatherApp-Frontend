@@ -6,6 +6,8 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 // Eye icon to display or hide password
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import { PASSWORD_MIN_LENGTH, PASSWORD_MAX_LENGTH } from "../common/constants";
+import { resetPasswordApi } from "../util/ApiUtil";
+
 const ResetPassword = () => {
   // define a state for eye icon open/close
   const [open, setOpen] = useState(false);
@@ -13,7 +15,23 @@ const ResetPassword = () => {
 
   let navigate = useNavigate(); // useNavigate hook which helps us to re-direct to the respective route
 
-  const onFormSubmit = async (values) => {
+  const onFormSubmit = async (values, actions) => {
+    const apiResponse = await resetPasswordApi(
+      verificationToken,
+      values.password
+    );
+
+    if (apiResponse.status === 1) {
+      navigate("/login");
+      toast(
+        "Your password has been reset successfully. Please proceed to login"
+      );
+    } else {
+      actions.resetForm();
+
+      toast(apiResponse.payLoad);
+    }
+
     toast("Token and password is displayed in console.log");
     console.log(verificationToken);
     console.log(values.password);
