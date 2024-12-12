@@ -4,14 +4,21 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
+import { verifyEmailApi } from "../util/ApiUtil";
 
 const VerifyEmail = () => {
   const { verificationCode } = useParams();
   let navigate = useNavigate(); //useNavigate hook which helps us to re-direct to the respective route
   console.log(verificationCode);
   const onFormSubmit = async (values) => {
-    console.log(values);
-    toast("Email verification code is present in console.log");
+    const apiResponse = await verifyEmailApi(values.verificationCode);
+
+    if (apiResponse.status === 1) {
+      navigate("/login");
+      toast("Congratulations your email has been successfully verified");
+    } else {
+      toast(apiResponse.payload);
+    }
   };
 
   const emailVerificationSchema = Yup.object().shape({
