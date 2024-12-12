@@ -31,10 +31,6 @@ const ResetPassword = () => {
 
       toast(apiResponse.payLoad);
     }
-
-    toast("Token and password is displayed in console.log");
-    console.log(verificationToken);
-    console.log(values.password);
   };
 
   // handle toggle for Eye icon
