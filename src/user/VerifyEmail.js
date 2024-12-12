@@ -8,7 +8,7 @@ import { useNavigate, useParams } from "react-router-dom";
 const VerifyEmail = () => {
   const { verificationCode } = useParams();
   let navigate = useNavigate(); //useNavigate hook which helps us to re-direct to the respective route
-
+  console.log(verificationCode);
   const onFormSubmit = async (values) => {
     console.log(values);
     toast("Email verification code is present in console.log");
