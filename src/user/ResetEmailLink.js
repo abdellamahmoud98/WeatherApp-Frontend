@@ -4,11 +4,21 @@ import * as Yup from 'yup'
 import toast from 'react-hot-toast'
 import { Link } from 'react-router-dom'
 import { EMAIL_MAX_LENGTH } from '../common/constants'
+import { resetEmailLinkApi } from '../util/ApiUtil'
 
 const ResetEmailLink = () => {
-  const onFormSubmit = async (values) => {
+  const onFormSubmit = async (values, actions) => {
     console.log(values)
-    toast('Email Id is displayed on console.lgo')
+    const apiResponse = await resetEmailLinkApi(values.email)
+
+    if (apiResponse.status === 1) {
+      toast(
+        'You will receive a password rest email, if user with that email exists'
+      )
+      actions.resetForm()
+    } else {
+      toast(apiResponse.payLoad)
+    }
   }
 
   const ResetEmailSchema = Yup.object().shape({
