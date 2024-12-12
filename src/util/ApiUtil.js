@@ -109,3 +109,46 @@ export const resetPasswordApi = async (token, password) => {
     return response;
   }
 };
+
+//login API from the backend
+
+export const loginApi = async (username, password) => {
+
+  let response = frameResponse();
+
+  try {
+
+    const url = `${API_BASE_URL}/user/login`;
+
+    const apiResponse = await axios.post(url, { username, password });
+
+    if (apiResponse.status === 200) {
+
+      const payLoad = {
+
+        token: apiResponse.headers.authorization, // the authorization token is present in response headers
+
+        username: apiResponse.data.username,
+
+      };
+
+      response = frameResponse(1, payLoad);
+
+    }
+
+  } catch (err) {
+
+    if (err.response) {
+
+      response = frameResponse(0, err.response.data.message);
+
+    }
+  } finally {
+
+    return response;
+
+  }
+
+  };
+
+

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import BPTN from "../images/BPTN.png";
@@ -6,6 +6,10 @@ import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 //Eye icon to display or hide password
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
+
+import { loginApi } from "../util/ApiUtil";
+import { AppContext } from "../Context/applicationContext";
+import { useNavigate } from "react-router-dom";
 
 import {
   USERNAME_MIN_LENGTH,
@@ -15,13 +19,25 @@ import {
 } from "../common/constants";
 
 const Login = () => {
+  let navigate = useNavigate(); //useNavigate hook which helps us to re-direct to the respective route
+  const appContext = useContext(AppContext); //useContext hook which helps to make use of AppContext
+
   const [open, setOpen] = useState(false);
 
-  const onFormSubmit = async (values) => {
-    console.log(values);
-    toast("Login successful.Check console.log for values");
-  };
+  const onFormSubmit = async (values, actions) => {
+    const apiResponse = await loginApi(values.username, values.password);
+    const { payLoad } = apiResponse;
 
+    if (apiResponse.status === 1) {
+        appContext.setSession(payLoad); // Store token and username in context/cookies
+        console.log(payLoad); // Log payload for debugging
+        toast("Login successful"); // Display success message
+        navigate('/home'); // Redirect to home (update route as needed)
+    } else {
+        actions.resetForm(); // Reset form fields on failure
+        toast(apiResponse.payLoad); // Display error message
+    }
+};
   // handle toggle for Eye icon
   const toggle = () => {
     setOpen(!open);
@@ -43,7 +59,7 @@ const Login = () => {
       .required("Password cannot be blank"),
   });
 
-  return  (
+  return (
     <Formik
       initialValues={{
         username: "",
@@ -148,9 +164,7 @@ const Login = () => {
           </div>
 
           <div className="my-6 space-y-2">
-            <div
-              className="flex items-center justify-center w-full p-2 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400"
-            >
+            <div className="flex items-center justify-center w-full p-2 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-400 focus:ring-violet-400">
               <p>Powered by</p>
               <img className="w-20 h-10" src={BPTN} />
             </div>
