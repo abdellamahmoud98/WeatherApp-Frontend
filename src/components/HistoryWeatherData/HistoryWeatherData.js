@@ -1,11 +1,12 @@
-import React from 'react'
+import React from "react";
 
 const HistoryWeatherData = () => {
   return (
     <div>
-      
+      <NoHistoryWeatherPresent />
     </div>
-  )
-}
+  );
+};
 
-export default HistoryWeatherData
+export default HistoryWeatherData;
+git
