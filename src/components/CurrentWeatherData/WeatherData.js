@@ -12,12 +12,7 @@ import DisplayWeatherData from "./DisplayWeatherData";
 // Import the getWeatherDataApi function from the ApiUtil file
 import { getWeatherDataApi } from "../../util/ApiUtil";
 
-import { getWeatherDataApi } from "../../util/ApiUtil";
-
-
-
 const WeatherData = () => {
-
   // - data: used to store weather data fetched from the API
   const [data, setData] = useState(null);
   // - location: used to track the current location for which to fetch weather data
@@ -161,6 +156,6 @@ useEffect(() => {
       </div>
     </div>
 );
-
+}
 
 export default WeatherData
