@@ -47,12 +47,12 @@ const App = () => {
           path='/verify/:verificationCode'
           element={<VerifyEmail />}
         />
+        <Route path='*' element={<Navigate to='/' replace />} />
       </Routes>
     )
   } else {
     return (
       <Routes>
-        <Route path='*' element={<Navigate to='/' replace />} />
         <Route
           exact
           path='/'
