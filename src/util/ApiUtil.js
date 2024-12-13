@@ -136,20 +136,41 @@ export const loginApi = async (username, password) => {
   }
 }
 
-
 export const getWeatherDataApi = async (token, location, save) => {
-  // build the URL to the Weather API endpoint based on the location and save the parameters 
-  const url = `${API_BASE_URL}/weathers/${location}/${save}`;
+  // build the URL to the Weather API endpoint based on the location and save the parameters
+  const url = `${API_BASE_URL}/weathers/${location}/${save}`
 
-  //  setting the header for the http request, (user auth token is included) 
-  const headers = { 
-   Headers : { Authorization: frameToken(token) },
-  };
+  //  setting the header for the http request, (user auth token is included)
+  const headers = {
+    Headers: { Authorization: frameToken(token) },
+  }
 
-  // Making a get requests to the api endpoint using axios, passing in the url and headers 
-  const apiResponse  = await axios.get(url, headers);
-  
+  // Making a get requests to the api endpoint using axios, passing in the url and headers
+  const apiResponse = await axios.get(url, headers)
+
   // Return the response from the api
-  return apiResponse;
-  };
-  
+  return apiResponse
+}
+
+// Call History weather API
+export const getHistoryWeatherDataApi = async (token) => {
+  let response = frameResponse()
+
+  try {
+    const url = `${API_BASE_URL}/weathers`
+    const apiResponse = await axios.get(url, {
+      headers: { Authorization: frameToken(token) },
+    })
+
+    if (apiResponse.status === 200) {
+      response = frameResponse(1, apiResponse.data)
+    }
+  } catch (err) {
+    if (err.response) {
+      response = frameResponse(0, err.response.data.message)
+    }
+    console.log(err)
+  } finally {
+    return response
+  }
+}
