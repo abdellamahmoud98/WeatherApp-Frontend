@@ -4,10 +4,10 @@ import React, { useState, useEffect } from 'react'
 import { IoMdSearch } from 'react-icons/io'
 
 // Import the LoadingIndicator component to be used when weather data is being loaded
-import LoadingIndicator from '../LoadingIndicator'
+import LoadingIndicator from '../LoadingIndicator/LoadingIndicator'
 
 // Import the DisplayWeatherData component to be used when weather data is ready to be displayed
-import DisplayWeatherData from './DisplayWeatherData/DisplayWeatherData'
+import DisplayWeatherData from '../CurrentWeatherData/DisplayWeatherData'
 
 // Import the getWeatherDataApi function from the ApiUtil file
 import { getWeatherDataApi } from '../../util/ApiUtil'
@@ -152,5 +152,4 @@ const WeatherData = ({ currentUser }) => {
     </div>
   )
 }
-
-export default WeatherData
+export default WeatherData;
