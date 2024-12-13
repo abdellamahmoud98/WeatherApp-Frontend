@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import NoHistoryWeatherPresent from './NoHistoryWeatherPresent'
 import toast from 'react-hot-toast'
 import { getHistoryWeatherDataApi } from '../../util/ApiUtil'
-import DisplayWeatherData from '../CurrentWeatherData/WeatherData'
+import DisplayWeatherData from '../CurrentWeatherData/DisplayWeatherData'
 import LoadingIndicator from '../LoadingIndicator/LoadingIndicator'
 
 const HistoryWeatherData = ({ currentUser }) => {
