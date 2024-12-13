@@ -11,6 +11,7 @@ const VerifyEmail = () => {
   let navigate = useNavigate(); //useNavigate hook which helps us to re-direct to the respective route
   console.log(verificationCode);
   const onFormSubmit = async (values) => {
+
     const apiResponse = await verifyEmailApi(values.verificationCode);
 
     if (apiResponse.status === 1) {
