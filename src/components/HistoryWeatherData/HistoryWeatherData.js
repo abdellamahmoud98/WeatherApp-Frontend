@@ -3,7 +3,7 @@ import React from "react";
 const HistoryWeatherData = () => {
   return (
     <div>
-      <NoHistoryWeatherPresent />
+      HistoryWeatherData
     </div>
   );
 };
