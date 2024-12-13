@@ -4,7 +4,7 @@ import { AppContext } from "../../Context/applicationContext";
 
 const Header = (props) => {
   const appContext = useContext(AppContext); //namespace it by using the useContext hook
-  const [showMenu, setShowMenul] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
 
   const logout = () => {
     //this calls the logout function which removes the user data from cookies
