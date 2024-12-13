@@ -1,11 +1,7 @@
 import React from 'react'
 
 const WeatherData = () => {
-  return (
-    <div>
-      
-    </div>
-  )
+  return <div>LiveWeatherData</div>
 }
 
 export default WeatherData

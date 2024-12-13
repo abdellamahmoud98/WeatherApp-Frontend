@@ -1,10 +1,13 @@
-import React from 'react';
+
+import React from "react";
+
+
 
 const NoHistoryWeatherPresent = () => {
   return (
     <div className="flex items-center justify-center min-h-screen p-5 min-w-screen">
       <div className="max-w-xl p-8 text-center text-indigo-900 bg-black/20 shadow-xl lg:max-w-3xl rounded-3xl lg:p-12">
-        <h3 className="text-2xl font-bold">We're happy you're here. </h3>
+        <h3 className="text-2xl font-bold">We're happy you're here.</h3>
         <div className="flex justify-center">
           <svg
             id="icone"

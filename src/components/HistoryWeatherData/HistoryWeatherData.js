@@ -1,12 +1,16 @@
+
 import React from 'react'
 import NoHistoryWeatherPresent from './NoHistoryWeatherPresent'
+
 
 const HistoryWeatherData = () => {
   return (
     <div>
   <NoHistoryWeatherPresent/> 
-    </div>
-  )
-}
 
-export default HistoryWeatherData
+      HistoryWeatherData
+    </div>
+  );
+};
+
+export default HistoryWeatherData;
