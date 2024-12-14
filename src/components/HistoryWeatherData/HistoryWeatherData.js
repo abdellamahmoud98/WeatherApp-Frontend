@@ -5,6 +5,8 @@ import { getHistoryWeatherDataApi } from '../../util/ApiUtil'
 import DisplayWeatherData from '../CurrentWeatherData/DisplayWeatherData'
 import LoadingIndicator from '../LoadingIndicator/LoadingIndicator'
 
+import TokenExpirationPage from "../TokenExpirationPage/TokenExpirationPage";
+
 const HistoryWeatherData = ({ currentUser }) => {
   const [results, setResults] = useState([])
   const [tokenExpired, setTokenExpired] = useState(false)
@@ -41,6 +43,13 @@ const HistoryWeatherData = ({ currentUser }) => {
   if (loading) {
     return <LoadingIndicator />
   }
+
+//if the session has expired render TokenExpirationPage 
+if (tokenExpired) {
+  return <TokenExpirationPage />;
+}
+
+
 
   if (data === false) {
     return (
