@@ -14,6 +14,8 @@ import { getWeatherDataApi } from '../../util/ApiUtil'
 
 import toast from 'react-hot-toast'
 
+import TokenExpirationPage from '../TokenExpirationPage/TokenExpirationPage'
+
 const WeatherData = ({ currentUser }) => {
   console.log(currentUser, 'tammy')
   // - data: used to store weather data fetched from the API
@@ -97,6 +99,10 @@ const WeatherData = ({ currentUser }) => {
     // clear timer
     return () => clearTimeout(timer)
   }, [errorMsg])
+
+  if (tokenExpired) {
+    return <TokenExpirationPage />
+  }
 
   if (!data) {
     return (

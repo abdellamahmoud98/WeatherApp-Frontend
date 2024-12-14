@@ -18,8 +18,9 @@ const AppContextProvider = ({ children }) => {
   }
   const setUserData = (userData) => setUserSessionData(userData)
   const getUserData = () => userSessionData
+
   const logout = () => {
-    removeCookie('userData', { path: '/' })
+    removeCookie('userData')
     setUserData(undefined)
   }
   return (

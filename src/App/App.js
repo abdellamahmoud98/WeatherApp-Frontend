@@ -34,6 +34,7 @@ const App = () => {
   if (isAuthenticated === false) {
     return (
       <Routes>
+        <Route path='*' element={<Navigate to='/login' replace />} />
         <Route exact path='/login' element={<Login />} />
         <Route exact path='/signup' element={<Signup />} />
         <Route
@@ -47,12 +48,12 @@ const App = () => {
           path='/verify/:verificationCode'
           element={<VerifyEmail />}
         />
-        <Route path='*' element={<Navigate to='/' replace />} />
       </Routes>
     )
   } else {
     return (
       <Routes>
+        <Route path='*' element={<Navigate to='/' replace />} />
         <Route
           exact
           path='/'
