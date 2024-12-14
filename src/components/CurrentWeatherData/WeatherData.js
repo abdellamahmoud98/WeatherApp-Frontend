@@ -15,6 +15,7 @@ import { getWeatherDataApi } from '../../util/ApiUtil'
 import toast from 'react-hot-toast'
 
 const WeatherData = ({ currentUser }) => {
+  console.log(currentUser, 'tammy')
   // - data: used to store weather data fetched from the API
   const [data, setData] = useState(null)
   // - location: used to track the current location for which to fetch weather data
@@ -49,8 +50,7 @@ const WeatherData = ({ currentUser }) => {
     const input = document.querySelector('input')
 
     // if input value is empty
-    if (input.value === '')
-    toast('Please enter a city name')
+    if (input.value === '') toast('Please enter a city name')
     // set animate to true
     setAnimate(true)
     // after 500 ms set animate to false
@@ -152,4 +152,4 @@ const WeatherData = ({ currentUser }) => {
     </div>
   )
 }
-export default WeatherData;
+export default WeatherData
