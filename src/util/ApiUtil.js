@@ -1,4 +1,3 @@
-
 import axios from 'axios'
 import { API_BASE_URL } from '../common/constants'
 
@@ -176,7 +175,6 @@ export const getHistoryWeatherDataApi = async (token) => {
   }
 }
 
-
 // createFavouriteCitiesApi
 export const createFavouriteCityApi = async (token, cityId) => {
   let response = frameResponse()
@@ -184,7 +182,6 @@ export const createFavouriteCityApi = async (token, cityId) => {
   try {
     const url = `${API_BASE_URL}/favouriteCities/create?cityId=${cityId}`
     const apiResponse = await axios.post(url, {
-
       headers: { Authorization: frameToken(token) },
     })
 
@@ -199,10 +196,7 @@ export const createFavouriteCityApi = async (token, cityId) => {
   } finally {
     return response
   }
-
 }
-
-
 
 // call getFavouriteCitiesApi
 export const getFavouriteCitiesApi = async (token) => {
@@ -211,13 +205,13 @@ export const getFavouriteCitiesApi = async (token) => {
   try {
     const url = `${API_BASE_URL}/favouriteCities`
     const apiResponse = await axios.get(url, {
-
       headers: { Authorization: frameToken(token) },
     })
 
     if (apiResponse.status === 200) {
       response = frameResponse(1, apiResponse.data)
     }
+
   } catch (err) {
     if (err.response) {
       response = frameResponse(0, err.response.data.message)
@@ -226,9 +220,7 @@ export const getFavouriteCitiesApi = async (token) => {
   } finally {
     return response
   }
-
 }
-
 
 // call deleteFavouriteCitiesApi
 export const deleteFavouriteCityApi = async (token, cityId) => {
@@ -237,7 +229,6 @@ export const deleteFavouriteCityApi = async (token, cityId) => {
   try {
     const url = `${API_BASE_URL}/favouriteCities/delete?favouriteCityId=${cityId}`
     const apiResponse = await axios.delete(url, {
-
       headers: { Authorization: frameToken(token) },
     })
 
@@ -252,5 +243,4 @@ export const deleteFavouriteCityApi = async (token, cityId) => {
   } finally {
     return response
   }
-
 }
