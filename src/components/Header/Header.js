@@ -7,7 +7,6 @@ const Header = (props) => {
   const [showMenu, setShowMenu] = useState(false)
 
   const logout = () => {
-    console.log('I am here')
     //this calls the logout function which removes the user data from cookies
     appContext.logout()
   }
@@ -54,6 +53,13 @@ const Header = (props) => {
               to='/historyWeatherData'
             >
               History Weather Data
+            </Link>
+
+            <Link
+              className='block mt-4 lg:inline-block lg:mt-0 font-bold text-purple-900 hover:text-black  text-lg py-2 px-4 lg:-ml-2'
+              to='/favouriteCities'
+            >
+              Favourite Cities
             </Link>
           </div>
           <div>

@@ -62,7 +62,7 @@ if (tokenExpired) {
             key={index}
             className='bg-black/20 text-purple-900 backdrop-blur-[80px] py-12 px-6 rounded-lg overflow-hidden'
           >
-            <DisplayWeatherData apiResponse={item} />
+            <DisplayWeatherData apiResponse={item} currentUser={currentUser.token}/>
           </div>
         ))}
       </div>

@@ -10,6 +10,7 @@ import LoadingIndicator from '../components/LoadingIndicator/LoadingIndicator'
 import WeatherData from '../components/CurrentWeatherData/WeatherData'
 import HistoryWeatherData from '../components/HistoryWeatherData/HistoryWeatherData'
 import WelcomePage from '../components/WelcomePage/WelcomePage'
+import FavouriteCities from '../components/FavouriteCities/FavouriteCities'
 import { AppContext } from '../Context/applicationContext'
 import Header from '../components/Header/Header'
 
@@ -80,6 +81,16 @@ const App = () => {
           element={
             <Header>
               <WeatherData currentUser={currentUser} />
+            </Header>
+          }
+        />
+
+        <Route
+          exact
+          path='/favouriteCities'
+          element={
+            <Header>
+              <FavouriteCities currentUser={currentUser} />
             </Header>
           }
         />
