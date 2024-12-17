@@ -23,7 +23,7 @@ const FavouriteCities = ({ currentUser }) => {
     )
     if (response.status === 1) {
       setData(false)
-      toast('user deleted successfully')
+      toast('favourite city deleted successfully')
     } else {
       setData(true)
       toast(response.payLoad)

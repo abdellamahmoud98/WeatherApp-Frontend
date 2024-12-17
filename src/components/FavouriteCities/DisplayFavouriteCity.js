@@ -39,7 +39,7 @@ const DisplayFavouriteCity = ({ apiResponse, onDeleteButton }) => {
 
         <div className='flex items-center gap-x-5'>
           <FiTrash2
-            className='text-[20px]'
+            className='text-[20px] cursor-pointer'
             onClick={() => onDeleteButton(favouriteCityId)}
           />
         </div>

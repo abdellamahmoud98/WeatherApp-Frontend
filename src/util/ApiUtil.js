@@ -181,7 +181,7 @@ export const createFavouriteCityApi = async (token, cityId) => {
 
   try {
     const url = `${API_BASE_URL}/favouriteCities/create?cityId=${cityId}`
-    const apiResponse = await axios.post(url, {
+    const apiResponse = await axios.post(url, null, {
       headers: { Authorization: frameToken(token) },
     })
 
@@ -211,7 +211,6 @@ export const getFavouriteCitiesApi = async (token) => {
     if (apiResponse.status === 200) {
       response = frameResponse(1, apiResponse.data)
     }
-
   } catch (err) {
     if (err.response) {
       response = frameResponse(0, err.response.data.message)

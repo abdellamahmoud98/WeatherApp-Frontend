@@ -17,7 +17,6 @@ import toast from 'react-hot-toast'
 import TokenExpirationPage from '../TokenExpirationPage/TokenExpirationPage'
 
 const WeatherData = ({ currentUser }) => {
-  console.log(currentUser, 'tammy')
   // - data: used to store weather data fetched from the API
   const [data, setData] = useState(null)
   // - location: used to track the current location for which to fetch weather data
@@ -151,7 +150,10 @@ const WeatherData = ({ currentUser }) => {
           </div>
         ) : (
           <div>
-            <DisplayWeatherData apiResponse={data} />
+            <DisplayWeatherData
+              apiResponse={data}
+              currentUser={currentUser.token}
+            />
           </div>
         )}
       </div>
